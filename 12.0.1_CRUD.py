@@ -1,5 +1,9 @@
 import pickle
-
+LOOK_UP = 1
+ADD = 2
+CHANGE = 3
+DELETE = 4
+QUIT = 5
 
 def menu():
     options = ["1","2","3","4"]
@@ -18,11 +22,6 @@ def menu():
 
 
 def main():
-    LOOK_UP = 1
-    ADD = 2
-    CHANGE = 3
-    DELETE = 4
-    QUIT = 5
     try:
         pickled_file = open("pickled_file", "rb")
         customer_file = pickle.load(pickled_file)
@@ -95,8 +94,8 @@ def delete(file):
 
 def save(file):
     try:
-        pickled_file = open("pickled_file", "w")
-        pickle.dump(file, "pickled_file")
+        pickled_file = open("pickled_file", "wb")
+        pickle.dump(file, pickled_file)
         pickled_file.close()
     except Exception as exception:
         print("File was unable to be saved.")
