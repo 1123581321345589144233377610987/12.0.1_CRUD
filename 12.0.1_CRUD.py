@@ -5,11 +5,12 @@ CHANGE = 3
 DELETE = 4
 QUIT = 5
 
+
 def menu():
-    options = ["1","2","3","4"]
+    options = ["1", "2", "3", "4", "5"]
     choice = 0
     while choice not in options:
-        print("Welcome to your email list manager!\n")
+        print("\nWelcome to your email list manager!\n")
         print("Enter your selection:")
         print("1. Look up an email by name")
         print("2. Add a new entry")
@@ -25,7 +26,6 @@ def main():
     try:
         pickled_file = open("pickled_file", "rb")
         customer_file = pickle.load(pickled_file)
-        print(customer_file)
         pickled_file.close()
     except:
         customer_file = {}
@@ -87,9 +87,9 @@ def delete(file):
             save(file)
             print("This is a confirmation message. Your changes have been saved.")
         else:
-            print("No changes made.")
+            print("Entry not found.")
     else:
-        print("Entry not found.")
+        print("No changes made.")
 
 
 def save(file):
@@ -97,8 +97,7 @@ def save(file):
         pickled_file = open("pickled_file", "wb")
         pickle.dump(file, pickled_file)
         pickled_file.close()
-    except Exception as exception:
+    except:
         print("File was unable to be saved.")
-        print(exception)
 
 main()
